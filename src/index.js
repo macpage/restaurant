@@ -1,8 +1,7 @@
-import order from "./menu"
+import menu from "./menu"
 
-console.log(order());
+
 const content = document.querySelector(".content");
-
 // Model
 function createProduct(){
     const products = [];
@@ -19,7 +18,7 @@ class product {
 }
 
 products.push(new product("Super Doggy Boba",4.90,"Very niceeee!", "../src/pic/super-doggy-boba.png"))
-products.push(new product("Abooba!",5.90,"Awooga!", "../src/pic/abooba.png"))
+products.push(new product("Abooba!",5.90,"Abooba!", "../src/pic/abooba.png"))
 products.push(new product("Thicc as Boba", 6.90, "Very thicc!", "../src/pic/thiccboba.png"))
 return products;
 }
@@ -35,17 +34,20 @@ function createHeader(){
     const navbar = document.createElement("div");
     navbar.classList.add("nav");
 
-    const home = document.createElement("button");
-    const menu = document.createElement("button");
-    const about = document.createElement("button");
+    const homeButton = document.createElement("button");
+    homeButton.classList.add("homeButton");
+    const menuButton = document.createElement("button");
+    menuButton.classList.add("menuButton");
+    const aboutButton = document.createElement("button");
+    aboutButton.classList.add("aboutButton");
 
-    home.innerHTML = "Home";
-    menu.innerHTML = "Menu";
-    about.innerHTML = "About";
+    homeButton.innerHTML = "Home";
+    menuButton.innerHTML = "Menu";
+    aboutButton.innerHTML = "About";
 
-    navbar.appendChild(home);
-    navbar.appendChild(menu);
-    navbar.appendChild(about);
+    navbar.appendChild(homeButton);
+    navbar.appendChild(menuButton);
+    navbar.appendChild(aboutButton);
     header.appendChild(headline);
     header.appendChild(navbar);
     content.appendChild(header);
@@ -53,7 +55,8 @@ function createHeader(){
 
 
 function createMain(){
-    const main = document.createElement("main");
+    const main = document.createElement("main");   
+    main.classList.add("home");
     const mainContent = document.createElement("div");
     mainContent.classList.add("mainContent");
 
@@ -112,4 +115,26 @@ function createFooter(){
 createHeader();
 createMain();
 createFooter();
+
+
 // Controll
+function changeToMenu(){
+    const menuButton = document.querySelector(".menuButton")
+    menuButton.addEventListener("click", ()=>{
+        const home = document.querySelector(".home");
+       home.style.display = "none";
+        menu();
+    })
+}
+
+function changeToHome(){
+    const homeButton = document.querySelector(".homeButton");
+   homeButton.addEventListener("click",() => {
+    const home = document.querySelector(".home");
+    const menu = document.querySelector(".menu");
+    menu.style.display = "none";
+    home.style.display = "grid";
+   })
+}
+changeToMenu();
+changeToHome();
