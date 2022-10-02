@@ -1,5 +1,5 @@
 import menu from "./menu"
-
+import about from "./about"
 
 const content = document.querySelector(".content");
 // Model
@@ -78,13 +78,13 @@ function createMain(){
         pic.src = createProduct()[i].img;
         const productName = document.createElement("p");
         productName.classList.add("product-name");
-        productName.innerHTML = "Name: "+createProduct()[i].name;
+        productName.innerHTML = ("Name: ").bold() + createProduct()[i].name;
         const productPrice = document.createElement("p");
         productPrice.classList.add("product-price");
-        productPrice.innerHTML = "Price: "+createProduct()[i].price + " €";
+        productPrice.innerHTML = ("Price: ").bold() + createProduct()[i].price + " €";
         const productInfo = document.createElement("p");
         productInfo.classList.add("product-info");
-        productInfo.innerHTML = '"'+createProduct()[i].info+'"';
+        productInfo.innerHTML = ("Info: ").bold() + `"${createProduct()[i].info}"`;
         
 
         e.appendChild(pic);
@@ -123,7 +123,23 @@ function changeToMenu(){
     menuButton.addEventListener("click", ()=>{
         const home = document.querySelector(".home");
        home.style.display = "none";
-        menu();
+       const about = document.querySelector(".about");
+       about.style.display = "none";
+        const menu = document.querySelector(".menu");
+        menu.style.display = "block";
+    })
+}
+
+function chanteToabout(){
+    const aboutButton = document.querySelector(".aboutButton");
+    aboutButton.addEventListener("click", ()=>{
+        const home = document.querySelector(".home");
+        home.style.display = "none";
+        const menu = document.querySelector(".menu");
+        menu.style.display = "none";
+        
+         const about = document.querySelector(".about");
+         about.style.display = "block";
     })
 }
 
@@ -132,9 +148,15 @@ function changeToHome(){
    homeButton.addEventListener("click",() => {
     const home = document.querySelector(".home");
     const menu = document.querySelector(".menu");
+    const about = document.querySelector(".about");
+    about.style.display = "none";
     menu.style.display = "none";
     home.style.display = "grid";
    })
 }
 changeToMenu();
 changeToHome();
+chanteToabout();
+
+menu();
+about();
