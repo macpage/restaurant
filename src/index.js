@@ -1,6 +1,7 @@
 import menu from "./menu"
 import about from "./about"
 
+
 const content = document.querySelector(".content");
 // Model
 function createProduct(){
